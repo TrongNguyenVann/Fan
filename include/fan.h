@@ -2,6 +2,7 @@
 #define FAN_H
 
 #include <iostream>
+#include <string>
 /**
  * Fan class to simulate the real fan in my room
  * It has status: on/ off
@@ -27,9 +28,15 @@ private:
   int m_level;
   Mode m_mode;
 
+  // Brand of the fan
+  std::string m_brand;
+
+  // The power of the fan
+  int m_power;
+
 public:
   // Fan constructor
-  Fan();
+  Fan(std::string brand = "unknown", int power = 0);
 
   // Get status
   inline Status GetStatus() {
@@ -61,6 +68,26 @@ public:
     m_mode = mode;
   }
 
+  // Get brand of fan
+  inline std::string GetBrand() {
+    return m_brand;
+  }
+
+  // Set brand
+  inline void SetBrand(std::string brand) {
+    m_brand = brand;
+  }
+
+  // Get power of fan
+  inline int GetPower() {
+    return m_power;
+  }
+
+  // Set mode
+  inline void SetPower(int power) {
+    m_power = power;
+  }
+
   // Start the fan
   void StartFan(int level);
 
@@ -69,6 +96,8 @@ public:
 
   // Change the mode off fan
   void ToogleMode();
+
+  void WelcomeFan();
 
   // Cout a fan
   friend std::ostream& operator<<(std::ostream& out, const Fan& fan);
